@@ -1,0 +1,6 @@
+
+<launch>
+    <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
+    <node pkg='ychau001_lab1' type='echo.py' name='echoer' />
+    <node type="rviz" name="rviz_lab" pkg="rviz" args="-d $(find ychau001_lab1)/rviz/config.rviz" />
+</launch>
