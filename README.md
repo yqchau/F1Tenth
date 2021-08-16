@@ -10,7 +10,7 @@ For more information, please refer to https://f1tenth.org/
 ```
 git clone https://github.com/cyuanqi920/F1Tenth
 ```
-2) Create a catkin workspace
+2) Create a workspace
 ```
 mkdir ~/catkin_ws/src
 ```
