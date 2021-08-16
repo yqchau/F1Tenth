@@ -18,14 +18,14 @@ mkdir ~/catkin_ws/src
 ```
 sudo ln -fs /path_to_this_repo/ychau001_lab1 ~/catkin_ws/src/ychau001_lab1
 ```
-5) Setup
+4) Setup
 ```
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 ```
 
-4) Launch the package
+5) Launch the package
 ```
 roslaunch ychau001_lab1 ychau001_lab1.launch
 ```
