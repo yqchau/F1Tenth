@@ -1,6 +1,6 @@
 import numpy as np 
 
-def preprocess_lidar(arr):
+def process_lidar(arr):
     # filters out inf / NaN in a numpy array
     arr = np.array(arr)
     arr = arr[np.isfinite(arr)]
@@ -11,4 +11,4 @@ def preprocess_lidar(arr):
 if __name__ == '__main__':
     x = np.array([np.NaN, np.inf, 1, 2, 3])
     print (x)
-    print (preprocess_lidar(x))
+    print (process_lidar(x))
