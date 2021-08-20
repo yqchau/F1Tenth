@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# from numpy.lib.function_base import angle
 import rospy
 
 from sensor_msgs.msg import LaserScan
@@ -51,8 +50,7 @@ class Safety(object):
 
         # projected velocity
         v = self.speed * np.cos(angles)
-        # for numerical stability
-        eps = 1e-5 
+        eps = 1e-5 # for numerical stability
         ttc = ranges / (np.maximum(v, 0) + eps)
         # print(f'min ttc: {np.min(ttc)}')
 
