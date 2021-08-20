@@ -49,26 +49,26 @@ class Safety(object):
         ranges = np.array(scan_msg.ranges)
         angles = np.arange(angle_min, angle_max, angle_inc)
 
+        # projected velocity
         v = self.speed * np.cos(angles)
-        # print(f'min_v: {np.min(np.maximum(v, 0))}')
-        # print(f'min_range: {np.min(ranges)}')
-        eps = 1e-5
+        # for numerical stability
+        eps = 1e-5 
         ttc = ranges / (np.maximum(v, 0) + eps)
-        print(f'min ttc: {np.min(ttc)}')
+        # print(f'min ttc: {np.min(ttc)}')
 
         # publish brake message and publish controller bool
-        ttc_thres = 0.4
-        perc_thres = 0.1
+        ttc_thres = 0.4 
+        perc_thres = 0.1 # requires 10% of ttc to be above ttc threshold to reduce false positive
+
         if np.sum(ttc < ttc_thres)/len(ttc) > perc_thres:
-            print("BRAKE!!!")
-            speed = AckermannDriveStamped()
-            speed.drive.speed = 0.0
-            braking = Bool()
-            braking.data = True
-            self.brake_pub.publish(speed)
-            self.brake_bool_pub.publish(braking)
+            print("BRAKE!")
+            ack_msg = AckermannDriveStamped()
+            ack_msg.drive.speed = 0.0
+   
+            self.brake_pub.publish(ack_msg)
+            self.brake_bool_pub.publish(True)
         else:
-            print('NO BRAKE!!!')
+            print('NO BRAKE!')
 
 def main():
     rospy.init_node('safety_node')
