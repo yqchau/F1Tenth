@@ -12,7 +12,7 @@ git clone https://github.com/cyuanqi920/F1Tenth
 ```
 2) Create a workspace
 ```
-mkdir ~/catkin_ws/src
+mkdir -p ~/catkin_ws/src
 ```
 3) Setup the F1Tenth Simulator by following instructions in https://github.com/f1tenth/f1tenth_simulator
 
