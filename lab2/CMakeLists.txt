@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(ychau001_lab2)
+project(lab2)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
