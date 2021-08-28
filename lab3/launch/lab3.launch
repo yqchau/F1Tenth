@@ -1,4 +1,4 @@
 <launch>
     <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
-    <node pkg='ychau001_lab3' type='wall_follow.py' name='auto_nav' output='screen' />
+    <node pkg='lab3' type='wall_follow.py' name='auto_nav' output='screen' />
 </launch>
