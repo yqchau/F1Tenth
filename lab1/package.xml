@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ychau001_lab1</name>
+  <name>lab1</name>
   <version>0.0.0</version>
-  <description>The ychau001_lab1 package</description>
+  <description>The lab1 package</description>
   <maintainer email="cyuanqi920@gmail.com">yq</maintainer>
   <license>TODO</license>
 

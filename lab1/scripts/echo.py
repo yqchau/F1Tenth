@@ -6,7 +6,7 @@ import numpy as np
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Float64 
 
-from ychau001_lab1.msg import scan_range
+from lab1.msg import scan_range
 from lidar_processing import process_lidar
 
 class Echo:
