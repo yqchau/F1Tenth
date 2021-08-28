@@ -18,7 +18,7 @@ mkdir ~/catkin_ws/src
 
 4) Link the respective package to your workspace
 ```
-sudo ln -fs /path_to_this_repo/ychau001_lab1 ~/catkin_ws/src/ychau001_lab1
+sudo ln -fs /path_to_this_repo/lab1 ~/catkin_ws/src/lab1
 ```
 5) Setup
 ```
@@ -29,6 +29,6 @@ source devel/setup.bash
 
 6) Launch the package
 ```
-roslaunch ychau001_lab1 ychau001_lab1.launch
+roslaunch lab1 ychau001_lab1.launch
 ```
 
