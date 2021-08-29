@@ -47,3 +47,10 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+
+add_executable(${PROJECT_NAME}_echoer src/echoer.cpp)
+add_dependencies(${PROJECT_NAME}_echoer ${PROJECT_NAME}_generate_messages_cpp)
+add_dependencies(${PROJECT_NAME}_echoer ${PROJECT_NAME}_gencpp)
+target_link_libraries(${PROJECT_NAME}_echoer
+  ${catkin_LIBRARIES}
+)

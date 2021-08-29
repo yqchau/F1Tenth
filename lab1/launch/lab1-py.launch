@@ -2,5 +2,5 @@
 <launch>
     <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
     <node pkg='lab1' type='echo.py' name='echoer' output='screen' />
-    <node type="rviz" name="rviz_lab" pkg="rviz" args="-d $(find lab1)/rviz/config.rviz" />
+    <!-- <node type="rviz" name="rviz_lab" pkg="rviz" args="-d $(find lab1)/rviz/config.rviz" /> -->
 </launch>
