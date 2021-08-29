@@ -27,8 +27,11 @@ catkin_make
 source devel/setup.bash
 ```
 
-6) Launch the package
+6) Launch the Python/C++ package respectively
 ```
-roslaunch lab1 ychau001_lab1.launch
+roslaunch lab1 lab1-py.launch
+```
+```
+roslaunch lab1 lab1-cpp.launch
 ```
 
