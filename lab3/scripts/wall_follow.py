@@ -10,19 +10,16 @@ from sensor_msgs.msg import Image, LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
 
 #PID CONTROL PARAMS
-kp = 0.05
-kd = 0.15
-ki = 0.0001
+kp = 8
+kd = 0.00001
+ki = 0.00001
 servo_offset = 0.0
 prev_error = 0.0 
 error = 0.0
 integral = 0.0
 
 #WALL FOLLOW PARAMS
-ANGLE_RANGE = 270 # Hokuyo 10LX has 270 degrees scan
-DESIRED_DISTANCE_RIGHT = 0.9 # meters
-DESIRED_DISTANCE_LEFT = 0.85
-VELOCITY = 1.20 # meters per second
+DESIRED_DISTANCE_LEFT = 0.90
 CAR_LENGTH = 0.50 # Traxxas Rally is 20 inches or 0.5 meters
 
 # OTHER PARAMS
@@ -48,7 +45,7 @@ class WallFollow:
         idx = int((angle + 3.14) / data.angle_increment)
         return data.ranges[idx]
 
-    def pid_control(self, error, velocity):
+    def pid_control(self, error):
         global integral
         global prev_error
         global kp
@@ -58,15 +55,15 @@ class WallFollow:
         global PRE_T
         angle = 0.0
 
-        #TODO: Use kp, ki & kd to implement a PID controller for 
+        # Use kp, ki & kd to implement a PID controller for 
         PRE_T = CUR_T
         CUR_T = rospy.get_time()
         dt = float(CUR_T - PRE_T)
-        # print(f'CUR_T: {CUR_T}')
 
         p_control_value = kp*error + kd*(error-prev_error)/dt + ki*(integral)
         integral += error
 
+        # Publishing message
         drive_msg = AckermannDriveStamped()
         drive_msg.header.stamp = rospy.Time.now()
         drive_msg.header.frame_id = "laser"
@@ -79,11 +76,10 @@ class WallFollow:
         else:
             drive_msg.drive.speed = 0.5
 
-        drive_msg.drive.speed = velocity
         self.drive_pub.publish(drive_msg)
 
     def followLeft(self, data, leftDist):
-        #Follow left wall as per the algorithm 
+        # Follow left wall as per the algorithm 
         a_angle = 0.7853 # pi/4
         b_angle = 1.57063 # pi/2
 
@@ -102,7 +98,7 @@ class WallFollow:
         """ 
         """
         error = self.followLeft(data, DESIRED_DISTANCE_LEFT)
-        self.pid_control(error, VELOCITY)
+        self.pid_control(error)
 
 def main(args):
     rospy.init_node("WallFollow_node", anonymous=True)
