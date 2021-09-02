@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
+    <node pkg='lab4' type='reactive_gap_follow.py' name='auto_nav_reactive' output='screen' />
+</launch>
