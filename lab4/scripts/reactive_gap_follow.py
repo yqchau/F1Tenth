@@ -85,7 +85,7 @@ class reactive_follow_gap:
         drive_msg.drive.steering_angle = angles[best_pt]
         self.drive_pub.publish(drive_msg)
 
-        print(f'Steering towards: {angles[best_pt]}')
+        # print(f'Steering towards: {angles[best_pt]}')
 
 
 
