@@ -24,8 +24,8 @@ class reactive_follow_gap:
             2.Rejecting high values (eg. > 3m)
         """
         ranges = np.array(ranges)
-        max_value = 5
-        window_size = 7
+        max_value = 20
+        window_size = 30
 
         # filter inf, NaN & element > max_value
         idx = (~np.isfinite(ranges)) | (ranges > max_value)
@@ -78,11 +78,18 @@ class reactive_follow_gap:
         best_pt = self.find_best_point(start, end, ranges)
 
         #Publish Drive message
+        
         drive_msg = AckermannDriveStamped()
         # drive_msg.header.stamp = rospy.Time.now()
         # drive_msg.header.frame_id = "laser"
-        drive_msg.drive.speed = 1.0
-        drive_msg.drive.steering_angle = angles[best_pt]
+        angle = angles[best_pt]
+        if (abs(angle) > 0.349):
+            drive_msg.drive.speed = 1.3
+        elif (abs(angle) > 0.174):
+            drive_msg.drive.speed = 1.2
+        else:
+            drive_msg.drive.speed = 0.9
+        drive_msg.drive.steering_angle = angle
         self.drive_pub.publish(drive_msg)
 
         # print(f'Steering towards: {angles[best_pt]}')
