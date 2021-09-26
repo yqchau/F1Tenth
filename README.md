@@ -1,9 +1,10 @@
-# Python3 Implementation of F1Tenth
-
+# Python3 & C++ Implementation of F1Tenth
 * Ubuntu 20.04
 * ROS Noetic
 
 For more information, please refer to https://f1tenth.org/
+
+![Alt Text](media/explore_map.gif)
 
 ## Usage
 1) Clone this github repository
