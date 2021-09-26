@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
+    <node pkg='lab2' type='safety_node' name='aeb' output='screen' />
+</launch>
