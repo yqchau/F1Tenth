@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find f1tenth_simulator)/launch/simulator.launch"/>
+  <node pkg="lab5" name="student_scan_matcher" type="student_scan_matcher" />
+</launch>
